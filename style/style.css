@@ -1,82 +1,102 @@
-*{
+* {
     box-sizing: border-box;
 }
-header{
+
+body {
+    background-color: #E5E5E5;
+}
+
+header {
     display: flex;
     background-color: #404EED;
     height: 89px;
 }
-.text-header{
+
+.text-header {
     display: flex;
     margin: auto 16px;
     font-family: 'New Rocker', cursive;
     font-size: 32px;
     color: #FCFCFC;
 }
-header img{
+
+header img {
     width: 50px;
     height: 50px;
     margin: auto 0px;
     margin-left: 80px;
-    
+
 }
-.choices-img{
+
+.choices-img {
     display: flex;
 }
-article{
+
+article {
     background-color: #FFFFFF;
     width: 695px;
-    height: 785px;
+    height: 800px;
 }
-aside{
+
+aside {
     background-color: #404EED;
     width: 670px;
-    height: 785px;
+    height: 800px;
     display: flex;
-    
+
 }
-aside img{
+
+aside img {
     width: 607px;
     height: 702px;
-    margin:24px auto 0px;
+    margin: 24px auto 0px;
 }
-.all-choices{
-    background-color:#FFFFFF;
+
+.all-choices {
+    background-color: #FFFFFF;
     margin-left: 110px;
-    
+
 }
-.models img{
+
+.models img {
     width: 80px;
     height: 80px;
     margin: 10px;
 }
-.models{
+
+.models {
     background-color: #FFFFFF;
     display: flex;
 }
-.option{
+
+.option {
     background-color: #FFFFFF;
     width: 120px;
     height: 130px;
     margin-right: 40px;
 }
-h1{
+
+h1 {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
     margin-bottom: 13px;
-    margin-top:39px;
+    margin-top: 39px;
     margin-left: 15px;
+    color: #232323;
 }
-h2{
+
+h2 {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
     text-align: center;
     margin-top: 5px;
-    
+    color: #232323;
+
 }
-.circle{
+
+.circle {
     background-color: #F2F2F2;
     border-radius: 50px;
     width: 100px;
@@ -84,28 +104,34 @@ h2{
     border: 0.5px solid #C4C4C4;
     margin: 0px auto;
 }
-.select{
+
+.select {
     border: 3px solid #404EED;
 }
-.collars{
-    background-color: #FFFFFF;
-    display: flex;
-}
-.collars img {
-    margin: 22px 10px;
-}
-.material{
+
+.collars {
     background-color: #FFFFFF;
     display: flex;
 }
 
-.img-seda{
+.collars img {
+    margin: 22px 10px;
+}
+
+.material {
+    background-color: #FFFFFF;
+    display: flex;
+}
+
+.img-seda {
     margin: 26px 23px 20px;
 }
-.img-algodao, .img-poliester{
-    margin:20px;
+
+.img-algodao, .img-poliester {
+    margin: 20px;
 }
-input{
+
+input {
     display: flex;
     margin-left: 15px;
     width: 396px;
@@ -114,21 +140,74 @@ input{
     border-radius: 10px;
     border: 0px;
 }
-button{
+
+button {
     width: 399px;
     height: 40px;
     background: #C4C4C4;
-    border-radius: 10px; 
-    border: 0px; 
+    border-radius: 10px;
+    border: 0px;
     margin-left: 15px;
     margin-top: 24px;
     color: #FCFCFC;
     font-weight: normal;
     font-size: 20px;
     font-family: 'Roboto', sans-serif;
-    
+
+
 }
-.finish-button{
+
+.finish-button {
     background-color: #404EED;
     cursor: pointer;
+}
+
+footer {
+    background-color: #F2F2F2;
+    width: 100%;
+    height: 342px;
+    display: flex;
+}
+
+.title-request {
+    width: 1100px;
+    height: 280px;
+    margin: auto;
+}
+
+.footer-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.models-request {
+    margin-top: 15px;
+    display: flex;
+    width: 1100px;
+    height: 260px;
+    overflow: scroll;
+}
+
+.shirt-user {
+    background-color: #FFFFFF;
+    width: 202px;
+    height: 236px;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+.shirt-user img {
+    height: 180px;
+    width: 180px;
+    margin: 16px 10px 0px 10px;
+}
+
+.shirt-user .user-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #232323;
+    display: flex;
+    justify-content: center;
 }
