@@ -40,7 +40,7 @@ function callingModels() {
     `
 }
 function modelSelected(selected,classe) {
-    Model=selected;
+    shirtOrder.model=selected;
     removeSelect(classe);
     if (selected === "t-shirt") {
         model1();
@@ -88,7 +88,7 @@ function callingCollars() {
     `
 }
 function collarSelected(selected,classe) {
-    Collar=selected;
+    shirtOrder.neck=selected;
     removeSelect(classe);
     if (selected === "v-neck") {
         collar1();
@@ -130,7 +130,7 @@ function callingMaterial() {
 `
 }
 function materialSelected(selected,classe) {
-    Material=selected;
+    shirtOrder.material=selected;
     removeSelect(classe)
     if (selected === "silk") {
         material1();
@@ -161,9 +161,9 @@ function callingInput() {
 }
 setInterval(check, 20)
 function check() {
-    linkImg = document.querySelector(".link").value;
+    shirtOrder.image = document.querySelector(".link").value;
     allSelect = document.querySelectorAll(".select")
-    if (allSelect.length === 3 && linkImg !== "") {
+    if (allSelect.length === 3 &&  shirtOrder.image !== "") {
         const xx = document.querySelector(".btn")
         xx.classList.add("finish-button")
         idBtn.removeAttribute('disabled');
@@ -185,11 +185,12 @@ function callingButton() {
 function activeButton() {
     sendShirtApi();
     setTimeout(callingShirtGet,2000)
+    console.log(shirtOrder)
 }
 function addShirt(){
     const shirtRequestHtml=document.querySelector(".models-request");
     shirtRequestHtml.innerHTML+=`
-        <div class="shirt-user"><img src="${linkImg}" />
+        <div class="shirt-user"><img src="${ shirtOrder.image}" />
             <span class="user-name">
             <bold>Criador:</bold>${nameUser}
             </span>
@@ -225,12 +226,12 @@ function confirm(idShirt){
    // ta disparando em loop infinito
 }
 let shirtOrder={
-	"model": `${Model}`,
-	"neck": `${Collar}`,
-	"material": `${Material}`,
-	"image": `${linkImg}`,
-	"owner": `${nameUser}`,
-	"author": `${nameUser}`
+	model: ``,
+	neck: ``,
+	material: ``,
+	image: ``,
+	owner: `${nameUser}`,
+	author: `${nameUser}`
 }
 function sendShirtApi(){
 const sendApi= axios.post("https://mock-api.driven.com.br/api/v4/shirts-api/shirts", shirtOrder)
