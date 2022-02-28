@@ -3,8 +3,11 @@ let linkImg;
 let allSelect;
 let nameUser;
 let xx= "t-shirt";
-let yy="v-neck";
-let zz="silk";
+let yy= "v-neck";
+let zz= "silk";
+let Model;
+let Collar;
+let Material;
 callingModels();
 callingCollars();
 callingMaterial();
@@ -23,25 +26,25 @@ function callingModels() {
     const models = document.querySelector(".models")
     models.innerHTML = `
     <div class="option">
-    <div class="circle model T-shirt" onclick=" modelSelected('T-shirt','model')"> <img src="./img/models-tshirt 1.png"></div>
+    <div class="circle model t-shirt" onclick=" modelSelected('t-shirt','model')"> <img src="./img/models-tshirt 1.png"></div>
     <h2>T-shirt</h2>
 </div>
 <div class="option">
-    <div class="circle model Camiseta" onclick=" modelSelected('Camiseta','model')"> <img src="./img/models-camiseta.png"></div>
+    <div class="circle model top-tank" onclick=" modelSelected('top-tank','model')"> <img src="./img/models-camiseta.png"></div>
     <h2>Camiseta</h2>
 </div>
 <div class="option">
-    <div class="circle model Manga-longa" onclick=" modelSelected('Manga-longa','model')"> <img src="./img/models-manga-longa.png"></div>
+    <div class="circle model long" onclick=" modelSelected('long','model')"> <img src="./img/models-manga-longa.png"></div>
     <h2>Manga longa</h2>
 </div>
     `
 }
 function modelSelected(selected,classe) {
-
+    Model=selected;
     removeSelect(classe);
-    if (selected === "T-shirt") {
+    if (selected === "t-shirt") {
         model1();
-    } else if (selected === "Camiseta") {
+    } else if (selected === "top-tank") {
         model2();
     }
     else {
@@ -50,15 +53,15 @@ function modelSelected(selected,classe) {
 
 }
 function model1() {
-    const add1 = document.querySelector(".T-shirt")
+    const add1 = document.querySelector(".t-shirt")
     add1.classList.add("select")
 }
 function model2() {
-    const add2 = document.querySelector(".Camiseta")
+    const add2 = document.querySelector(".top-tank")
     add2.classList.add("select")
 }
 function model3() {
-    const add3 = document.querySelector(".Manga-longa")
+    const add3 = document.querySelector(".long")
     add3.classList.add("select")
 }
 function removeSelect(classe) {
@@ -71,24 +74,25 @@ function callingCollars() {
     const collars = document.querySelector(".collars")
     collars.innerHTML = `
     <div class="option">
-    <div class="circle collar Gola-v" onclick="collarSelected('Gola-v','collar')"> <img src="./img/golaV.png"></div>
+    <div class="circle collar v-neck" onclick="collarSelected('v-neck','collar')"> <img src="./img/golaV.png"></div>
     <h2>Gola V</h2>
 </div>
 <div class="option">
-    <div class="circle collar Gola-redonda" onclick="collarSelected('Gola-redonda','collar')"> <img src="./img/gola-redonda.png"></div>
+    <div class="circle collar round" onclick="collarSelected('round','collar')"> <img src="./img/gola-redonda.png"></div>
     <h2>Gola Redonda</h2>
 </div>
 <div class="option">
-    <div class="circle collar Gola-polo " onclick="collarSelected('Gola-polo','collar')"> <img src="./img/polo-shirt (1) 1.png"></div>
+    <div class="circle collar polo " onclick="collarSelected('polo','collar')"> <img src="./img/polo-shirt (1) 1.png"></div>
     <h2>Gola polo</h2>
 </div>
     `
 }
 function collarSelected(selected,classe) {
-   removeSelect(classe);
-    if (selected === "Gola-v") {
+    Collar=selected;
+    removeSelect(classe);
+    if (selected === "v-neck") {
         collar1();
-    } else if (selected === "Gola-redonda") {
+    } else if (selected === "round") {
         collar2();
     }
     else {
@@ -97,39 +101,40 @@ function collarSelected(selected,classe) {
 
 }
 function collar1() {
-    const add1 = document.querySelector(".Gola-v")
+    const add1 = document.querySelector(".v-neck")
     add1.classList.add("select")
 }
 function collar2() {
-    const add1 = document.querySelector(".Gola-redonda")
+    const add1 = document.querySelector(".round")
     add1.classList.add("select")
 }
 function collar3() {
-    const add1 = document.querySelector(".Gola-polo")
+    const add1 = document.querySelector(".polo")
     add1.classList.add("select")
 }
 function callingMaterial() {
     const material = document.querySelector(".materials")
     material.innerHTML = `
 <div class="option">
-<div class="circle material Seda" onclick="materialSelected('Seda','material')"> <img class="img-seda" src="./img/silk 1.png"></div>
+<div class="circle material silk" onclick="materialSelected('silk','material')"> <img class="img-seda" src="./img/silk 1.png"></div>
 <h2>Seda</h2>
 </div>
 <div class="option">
-<div class="circle material Algodao" onclick="materialSelected('Algodao','material')"> <img class="img-algodao" src="./img/organic-cotton 1.png"></div>
+<div class="circle material cotton" onclick="materialSelected('cotton','material')"> <img class="img-algodao" src="./img/organic-cotton 1.png"></div>
 <h2>Algodão</h2>
 </div>
 <div class="option">
-<div class="circle material Poliester" onclick="materialSelected('Poliester','material')"> <img class="img-poliester" src="./img/quimica 1.png"></div>
+<div class="circle material polyester" onclick="materialSelected('polyester','material')"> <img class="img-poliester" src="./img/quimica 1.png"></div>
 <h2>Poliéster</h2>
 </div>
 `
 }
 function materialSelected(selected,classe) {
+    Material=selected;
     removeSelect(classe)
-    if (selected === "Seda") {
+    if (selected === "silk") {
         material1();
-    } else if (selected === "Algodao") {
+    } else if (selected === "cotton") {
         material2();
     }
     else {
@@ -137,15 +142,15 @@ function materialSelected(selected,classe) {
     }
 }
 function material1() {
-    const add1 = document.querySelector(".Seda")
+    const add1 = document.querySelector(".silk")
     add1.classList.add("select")
 }
 function material2() {
-    const add1 = document.querySelector(".Algodao")
+    const add1 = document.querySelector(".cotton")
     add1.classList.add("select")
 }
 function material3() {
-    const add1 = document.querySelector(".Poliester")
+    const add1 = document.querySelector(".polyester")
     add1.classList.add("select")
 }
 function callingInput() {
@@ -161,8 +166,9 @@ function check() {
     if (allSelect.length === 3 && linkImg !== "") {
         const xx = document.querySelector(".btn")
         xx.classList.add("finish-button")
+        idBtn.removeAttribute('disabled');
     } else {
-        
+        idBtn.setAttribute('disabled','disabled')
         const zz = document.querySelector(".btn")
         zz.classList.remove("finish-button")
     }
@@ -173,7 +179,7 @@ function check() {
 function callingButton() {
     const buttonHtml = document.querySelector('.button')
     buttonHtml.innerHTML = `
-    <button class="btn" onclick="activeButton();">Confirmar pedido</button>
+    <button id="idBtn" class="btn" disabled="disabled" onclick="activeButton();">Confirmar pedido</button>
     `
 }
 function activeButton() {
@@ -207,29 +213,33 @@ function renderShirt(arquivosGet){
 function renderGetShirt(arquivosGet){
     const shirtRequestHtml=document.querySelector(".models-request");
     shirtRequestHtml.innerHTML+=`
-        <div class="shirt-user"><img src="${arquivosGet.image}" />
+        <div class="shirt-user" id=${arquivosGet.id} onclick="confirm(${arquivosGet.id})"><img src="${arquivosGet.image}" />
             <span class="user-name">
             <bold>Criador:</bold>${arquivosGet.owner}
             </span>
         </div>`
 }
+function confirm(idShirt){
+    console.log(idShirt)
+   confirm("voce deseja encomendar uma igual ??")
+   // ta disparando em loop infinito
+}
+let shirtOrder={
+	"model": `${Model}`,
+	"neck": `${Collar}`,
+	"material": `${Material}`,
+	"image": `${linkImg}`,
+	"owner": `${nameUser}`,
+	"author": `${nameUser}`
+}
 function sendShirtApi(){
-  const sendApi= axios.post("https://mock-api.driven.com.br/api/v4/shirts-api/shirts",objApi)
-  sendApi.then(apiSucess)
-  sendApi.catch(apiError)
+const sendApi= axios.post("https://mock-api.driven.com.br/api/v4/shirts-api/shirts", shirtOrder)
+sendApi.then(apiSucess)
+sendApi.catch(apiError)
 }
 function apiSucess(){
     alert("sua camiseta foi encomendada")
 }
 function apiError(){
     alert("Ops, não conseguimos processar sua encomenda")
-}
-
-let objApi={
-	"model": xx,
-	"neck": yy,
-	"material": zz,
-	"image": linkImg,
-	"owner": nameUser,
-	"author": nameUser
 }
