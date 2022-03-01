@@ -1,13 +1,6 @@
 let contador = 0;
-let linkImg;
 let allSelect;
 let nameUser;
-let xx= "t-shirt";
-let yy= "v-neck";
-let zz= "silk";
-let Model;
-let Collar;
-let Material;
 callingModels();
 callingCollars();
 callingMaterial();
@@ -184,7 +177,8 @@ function callingButton() {
 }
 function activeButton() {
     sendShirtApi();
-    setTimeout(callingShirtGet,2000)
+    setTimeout(callingShirtGet,1000)
+    setTimeout(removeShirts,1000)
     console.log(shirtOrder)
 }
 function addShirt(){
@@ -240,7 +234,21 @@ sendApi.catch(apiError)
 }
 function apiSucess(){
     alert("sua camiseta foi encomendada")
+    // callingShirtGet();
 }
 function apiError(){
     alert("Ops, não conseguimos processar sua encomenda")
 }
+function removeShirts(){
+    const shirtRequestHtml=document.querySelectorAll(".shirt-user");
+    if(shirtRequestHtml.length>10){}
+    for(let i=0;i<shirtRequestHtml.length;i++){
+        const shirtRequestHtml=document.querySelector(".models-request");
+        shirtRequestHtml.innerHTML=`
+            <div class="shirt-user" id= onclick="confirm()">
+                <span class="user-name">
+                <bold></bold>
+                </span>
+            </div>`
+    }
+    }
