@@ -177,6 +177,13 @@ function activeButton() {
     sendShirtApi();
     setTimeout(callingShirtGet, 500)
     setTimeout(removeShirts, 500)
+    setTimeout(removeRemove,700)
+}
+function removeRemove(){
+    const remove = document.querySelectorAll(".select");
+    for (let i = 0; i < remove.length; i++) {
+        remove[i].classList.remove("select")
+    }
 }
 function addShirt() {
     const shirtRequestHtml = document.querySelector(".models-request");
