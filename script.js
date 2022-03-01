@@ -1,6 +1,7 @@
 let contador = 0;
 let allSelect;
 let nameUser;
+let numberId;
 callingModels();
 callingCollars();
 callingMaterial();
@@ -162,7 +163,7 @@ function check() {
         idBtn.removeAttribute('disabled');
     } else {
         idBtn.setAttribute('disabled', 'disabled')
-        const onclickRemove= document.querySelector(".btn")
+        const onclickRemove = document.querySelector(".btn")
         onclickRemove.classList.remove("finish-button")
     }
 }
@@ -174,8 +175,8 @@ function callingButton() {
 }
 function activeButton() {
     sendShirtApi();
-    setTimeout(callingShirtGet, 1000)
-    setTimeout(removeShirts, 1000)
+    setTimeout(callingShirtGet, 500)
+    setTimeout(removeShirts, 500)
 }
 function addShirt() {
     const shirtRequestHtml = document.querySelector(".models-request");
@@ -240,23 +241,29 @@ function removeShirts() {
             </div>`
     }
 }
-function getget(){
-    const shirtPromise=axios.get("https://mock-api.driven.com.br/api/v4/shirts-api/shirts")
-    shirtPromise.then(goodGood)
-}
-function goodGood(info){
-const infoData=info.data
-const filterId= infoData.filter(item => item.id===1330)
-sendApiUserShirt(filterId)
-}
 function shirtConfirm(id) {
-    let guardandoId= id
+    let guardandoId = id
     let orderConfirm = confirm("deseja realmente comprar essa blusa??");
     if (orderConfirm === true) {
-        getget()
+        getUserShirtRequest(id)
     }
 }
-function sendApiUserShirt(shirt){
+function getUserShirtRequest(userId) {
+    const shirtPromise = axios.get("https://mock-api.driven.com.br/api/v4/shirts-api/shirts")
+    shirtPromise.then(goodGood)
+    shirtPromise.catch(badBad)
+    numberId = userId;
+}
+function goodGood(info) {
+    const infoData = info.data
+    const filterId = infoData.filter(item => item.id === numberId)
+    sendApiUserShirt(filterId)
+}
+function badBad() {
+    alert("algo inesperado aconteceu..., atualizaremos a página :)")
+    document.location.reload(true);
+}
+function sendApiUserShirt(shirt) {
     let shirtUserApi = {
         model: `${shirt[0].model}`,
         neck: `${shirt[0].neck}`,
@@ -264,14 +271,16 @@ function sendApiUserShirt(shirt){
         image: `${shirt[0].image}`,
         owner: `${shirt[0].owner}`,
         author: `${shirt[0].owner}`
-    } 
+    }
     const sendUserApi = axios.post("https://mock-api.driven.com.br/api/v4/shirts-api/shirts", shirtUserApi)
     sendUserApi.then(apiUserSucess)
     sendUserApi.catch(apiUserError)
 }
-function apiUserSucess(){
+function apiUserSucess() {
     alert("sua camiseta foi encomendada, obrigado pela preferencia :)")
+    callingShirtGet();
+    removeShirts();
 }
-function apiUserError(){
+function apiUserError() {
     alert("não conseguimos encomendar sua camiseta :(, tente criar uma... :)")
 }
