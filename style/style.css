@@ -1,17 +1,14 @@
 * {
     box-sizing: border-box;
 }
-
 body {
     background-color: #E5E5E5;
 }
-
 header {
     display: flex;
     background-color: #404EED;
     height: 89px;
 }
-
 .text-header {
     display: flex;
     margin: auto 16px;
@@ -19,7 +16,6 @@ header {
     font-size: 32px;
     color: #FCFCFC;
 }
-
 header img {
     width: 50px;
     height: 50px;
@@ -27,17 +23,14 @@ header img {
     margin-left: 80px;
 
 }
-
 .choices-img {
     display: flex;
 }
-
 article {
     background-color: #FFFFFF;
     width: 695px;
     height: 800px;
 }
-
 aside {
     background-color: #404EED;
     width: 670px;
@@ -45,37 +38,31 @@ aside {
     display: flex;
 
 }
-
 aside img {
     width: 607px;
     height: 702px;
     margin: 24px auto 0px;
 }
-
 .all-choices {
     background-color: #FFFFFF;
     margin-left: 110px;
 
 }
-
 .models img {
     width: 80px;
     height: 80px;
     margin: 10px;
 }
-
 .models {
     background-color: #FFFFFF;
     display: flex;
 }
-
 .option {
     background-color: #FFFFFF;
     width: 120px;
     height: 130px;
     margin-right: 40px;
 }
-
 h1 {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
@@ -95,7 +82,6 @@ h2 {
     color: #232323;
 
 }
-
 .circle {
     background-color: #F2F2F2;
     border-radius: 50px;
@@ -104,33 +90,26 @@ h2 {
     border: 0.5px solid #C4C4C4;
     margin: 0px auto;
 }
-
 .select {
     border: 3px solid #404EED;
 }
-
 .collars {
     background-color: #FFFFFF;
     display: flex;
 }
-
 .collars img {
     margin: 22px 10px;
 }
-
 .materials {
     background-color: #FFFFFF;
     display: flex;
 }
-
 .img-seda {
     margin: 26px 23px 20px;
 }
-
 .img-algodao, .img-poliester {
     margin: 20px;
 }
-
 input {
     display: flex;
     margin-left: 15px;
@@ -140,7 +119,6 @@ input {
     border-radius: 10px;
     border: 0px;
 }
-
 button {
     width: 399px;
     height: 40px;
@@ -156,31 +134,26 @@ button {
 
 
 }
-
 .finish-button {
     background-color: #404EED;
     cursor: pointer;
 }
-
 footer {
     background-color: #F2F2F2;
     width: 100%;
     height: 342px;
     display: flex;
 }
-
 .title-request {
     width: 1100px;
     height: 280px;
     margin: auto;
 }
-
 .footer-title {
     font-family: 'Roboto', sans-serif;
     font-size: 24px;
     font-weight: 400;
 }
-
 .models-request {
     margin-top: 15px;
     display: flex;
@@ -193,7 +166,6 @@ footer {
     background-color: #F2F2F2;
     border-radius: 5px;
 }
-
 .shirt-user {
     background-color: #FFFFFF;
     width: 202px;
@@ -201,13 +173,11 @@ footer {
     border-radius: 10px;
     margin-right: 15px;
 }
-
 .shirt-user img {
     height: 180px;
     width: 180px;
     margin: 16px 10px 0px 10px;
 }
-
 .shirt-user .user-name {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;

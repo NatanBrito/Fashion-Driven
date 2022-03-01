@@ -8,12 +8,12 @@ callingInput();
 callingButton();
 callingShirtGet();
 idUser();
-function idUser(){
-nameUser= prompt("Qual é o seu nome??");
-if(nameUser===''){
-    alert("escreva um nome válido")
-    idUser();
-}
+function idUser() {
+    nameUser = prompt("Qual é o seu nome??");
+    if (nameUser === '') {
+        alert("escreva um nome válido")
+        idUser();
+    }
 }
 function callingModels() {
     const models = document.querySelector(".models")
@@ -32,8 +32,8 @@ function callingModels() {
 </div>
     `
 }
-function modelSelected(selected,classe) {
-    shirtOrder.model=selected;
+function modelSelected(selected, classe) {
+    shirtOrder.model = selected;
     removeSelect(classe);
     if (selected === "t-shirt") {
         model1();
@@ -58,7 +58,7 @@ function model3() {
     add3.classList.add("select")
 }
 function removeSelect(classe) {
-    const remove = document.querySelectorAll("."+classe);
+    const remove = document.querySelectorAll("." + classe);
     for (let i = 0; i < remove.length; i++) {
         remove[i].classList.remove("select")
     }
@@ -80,8 +80,8 @@ function callingCollars() {
 </div>
     `
 }
-function collarSelected(selected,classe) {
-    shirtOrder.neck=selected;
+function collarSelected(selected, classe) {
+    shirtOrder.neck = selected;
     removeSelect(classe);
     if (selected === "v-neck") {
         collar1();
@@ -122,8 +122,8 @@ function callingMaterial() {
 </div>
 `
 }
-function materialSelected(selected,classe) {
-    shirtOrder.material=selected;
+function materialSelected(selected, classe) {
+    shirtOrder.material = selected;
     removeSelect(classe)
     if (selected === "silk") {
         material1();
@@ -156,18 +156,15 @@ setInterval(check, 20)
 function check() {
     shirtOrder.image = document.querySelector(".link").value;
     allSelect = document.querySelectorAll(".select")
-    if (allSelect.length === 3 &&  shirtOrder.image !== "") {
-        const xx = document.querySelector(".btn")
-        xx.classList.add("finish-button")
+    if (allSelect.length === 3 && shirtOrder.image !== "") {
+        const onclickAdd = document.querySelector(".btn")
+        onclickAdd.classList.add("finish-button")
         idBtn.removeAttribute('disabled');
     } else {
-        idBtn.setAttribute('disabled','disabled')
-        const zz = document.querySelector(".btn")
-        zz.classList.remove("finish-button")
+        idBtn.setAttribute('disabled', 'disabled')
+        const onclickRemove= document.querySelector(".btn")
+        onclickRemove.classList.remove("finish-button")
     }
-    //só falta pensar em um jeito de vir os nomes tbm pra ir pra API
-    // falta FAZER VERIFICAR se é link
-
 }
 function callingButton() {
     const buttonHtml = document.querySelector('.button')
@@ -177,78 +174,75 @@ function callingButton() {
 }
 function activeButton() {
     sendShirtApi();
-    setTimeout(callingShirtGet,1000)
-    setTimeout(removeShirts,1000)
-    console.log(shirtOrder)
+    setTimeout(callingShirtGet, 1000)
+    setTimeout(removeShirts, 1000)
 }
-function addShirt(){
-    const shirtRequestHtml=document.querySelector(".models-request");
-    shirtRequestHtml.innerHTML+=`
-        <div class="shirt-user"><img src="${ shirtOrder.image}" />
+function addShirt() {
+    const shirtRequestHtml = document.querySelector(".models-request");
+    shirtRequestHtml.innerHTML += `
+        <div class="shirt-user"><img src="${shirtOrder.image}" />
             <span class="user-name">
             <bold>Criador:</bold>${nameUser}
             </span>
         </div>`
 }
-
-function callingShirtGet(){
+function callingShirtGet() {
     const promise = axios.get("https://mock-api.driven.com.br/api/v4/shirts-api/shirts");
-promise.then(renderShirt)
-promise.catch(bad)
+    promise.then(renderShirt)
+    promise.catch(bad)
 }
-function bad(){
+function bad() {
     alert("algo deu errado, reiniciaremos a pagina...")
     document.location.reload(true);
 }
-function renderShirt(arquivosGet){
-    let  data=arquivosGet.data
-    console.log(data);
+function renderShirt(arquivosGet) {
+    let data = arquivosGet.data
     data.forEach(renderGetShirt)
 }
-function renderGetShirt(arquivosGet){
-    const shirtRequestHtml=document.querySelector(".models-request");
-    shirtRequestHtml.innerHTML+=`
-        <div class="shirt-user" id=${arquivosGet.id} onclick="confirm(${arquivosGet.id})"><img src="${arquivosGet.image}" />
+function renderGetShirt(arquivosGet) {
+    const shirtRequestHtml = document.querySelector(".models-request");
+    shirtRequestHtml.innerHTML += `
+        <div class="shirt-user" onclick="shirtConfirm(${arquivosGet.id})"><img src="${arquivosGet.image}" />
             <span class="user-name">
             <bold>Criador:</bold>${arquivosGet.owner}
             </span>
         </div>`
 }
-function confirm(idShirt){
-    console.log(idShirt)
-   confirm("voce deseja encomendar uma igual ??")
-   // ta disparando em loop infinito
+function shirtConfirm(id) {
+    let orderConfirm = confirm("deseja realmente comprar essa blusa??");
+    if (orderConfirm === true) {
+        alert("não foi possivel realizar esse pedido, mas você pode criar a sua ;)")
+    }
 }
-let shirtOrder={
-	model: ``,
-	neck: ``,
-	material: ``,
-	image: ``,
-	owner: `${nameUser}`,
-	author: `${nameUser}`
+let shirtOrder = {
+    model: ``,
+    neck: ``,
+    material: ``,
+    image: ``,
+    owner: `${nameUser}`,
+    author: `${nameUser}`
 }
-function sendShirtApi(){
-const sendApi= axios.post("https://mock-api.driven.com.br/api/v4/shirts-api/shirts", shirtOrder)
-sendApi.then(apiSucess)
-sendApi.catch(apiError)
+function sendShirtApi() {
+    const sendApi = axios.post("https://mock-api.driven.com.br/api/v4/shirts-api/shirts", shirtOrder)
+    sendApi.then(apiSucess)
+    sendApi.catch(apiError)
 }
-function apiSucess(){
+function apiSucess() {
     alert("sua camiseta foi encomendada")
-    // callingShirtGet();
 }
-function apiError(){
+function apiError() {
     alert("Ops, não conseguimos processar sua encomenda")
 }
-function removeShirts(){
-    const shirtRequestHtml=document.querySelectorAll(".shirt-user");
-    if(shirtRequestHtml.length>10){}
-    for(let i=0;i<shirtRequestHtml.length;i++){
-        const shirtRequestHtml=document.querySelector(".models-request");
-        shirtRequestHtml.innerHTML=`
+function removeShirts() {
+    const shirtRequestHtml = document.querySelectorAll(".shirt-user");
+    if (shirtRequestHtml.length > 10) { }
+    for (let i = 0; i < shirtRequestHtml.length; i++) {
+        const shirtRequestHtml = document.querySelector(".models-request");
+        shirtRequestHtml.innerHTML = `
             <div class="shirt-user" id= onclick="confirm()">
                 <span class="user-name">
                 <bold></bold>
                 </span>
             </div>`
     }
-    }
+}
