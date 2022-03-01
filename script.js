@@ -202,17 +202,11 @@ function renderShirt(arquivosGet) {
 function renderGetShirt(arquivosGet) {
     const shirtRequestHtml = document.querySelector(".models-request");
     shirtRequestHtml.innerHTML += `
-        <div class="shirt-user" onclick="shirtConfirm(${arquivosGet.id})"><img src="${arquivosGet.image}" />
+        <div class="shirt-user" id="${arquivosGet.id}" onclick="shirtConfirm(${arquivosGet.id})"><img src="${arquivosGet.image}" />
             <span class="user-name">
             <bold>Criador:</bold>${arquivosGet.owner}
             </span>
         </div>`
-}
-function shirtConfirm(id) {
-    let orderConfirm = confirm("deseja realmente comprar essa blusa??");
-    if (orderConfirm === true) {
-        alert("não foi possivel realizar esse pedido, mas você pode criar a sua ;)")
-    }
 }
 let shirtOrder = {
     model: ``,
@@ -245,4 +239,39 @@ function removeShirts() {
                 </span>
             </div>`
     }
+}
+function getget(){
+    const shirtPromise=axios.get("https://mock-api.driven.com.br/api/v4/shirts-api/shirts")
+    shirtPromise.then(goodGood)
+}
+function goodGood(info){
+const infoData=info.data
+const filterId= infoData.filter(item => item.id===1330)
+sendApiUserShirt(filterId)
+}
+function shirtConfirm(id) {
+    let guardandoId= id
+    let orderConfirm = confirm("deseja realmente comprar essa blusa??");
+    if (orderConfirm === true) {
+        getget()
+    }
+}
+function sendApiUserShirt(shirt){
+    let shirtUserApi = {
+        model: `${shirt[0].model}`,
+        neck: `${shirt[0].neck}`,
+        material: `${shirt[0].material}`,
+        image: `${shirt[0].image}`,
+        owner: `${shirt[0].owner}`,
+        author: `${shirt[0].owner}`
+    } 
+    const sendUserApi = axios.post("https://mock-api.driven.com.br/api/v4/shirts-api/shirts", shirtUserApi)
+    sendUserApi.then(apiUserSucess)
+    sendUserApi.catch(apiUserError)
+}
+function apiUserSucess(){
+    alert("sua camiseta foi encomendada, obrigado pela preferencia :)")
+}
+function apiUserError(){
+    alert("não conseguimos encomendar sua camiseta :(, tente criar uma... :)")
 }
