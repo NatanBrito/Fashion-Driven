@@ -1,6 +1,7 @@
 # Fashion-Driven
 projeto de uma landing page simples para pedido de camisetas, consumindo API,
 ## tecnologias usadas
-html,css,javascript,API
+<ul>
+  <li>HTML</li>
 ## deploy da aplicação
 https://lnkd.in/dKqzYt3d
