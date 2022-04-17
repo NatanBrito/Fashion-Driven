@@ -5,6 +5,7 @@ projeto de uma landing page simples para pedido de camisetas, consumindo API,
   <li>HTML</li>
   <li>CSS</li>
   <li>JavaScript</li>
- </ul>
+</ul>
+
 ## deploy da aplicação
 https://lnkd.in/dKqzYt3d
